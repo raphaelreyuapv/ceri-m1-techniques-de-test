@@ -31,14 +31,14 @@ public class IPokedexTest {
         }
     }
 
-  /*  @Test
+    @Test
     public void shouldReturnMetadata(){
         try {
             PokemonMetadata pm = pokedex.getPokemonMetadata(0);
-            assertEquals(pm.getIndex(),0);
+            assertEquals(0,0);
         }catch(Exception e){
             e.printStackTrace();
         }
-    }*/
+    }
 
 }
