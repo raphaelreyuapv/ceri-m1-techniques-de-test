@@ -12,7 +12,7 @@ public class IPokemonFactoryTest {
     private IPokemonFactory pf;
     private Pokemon tt;
     Pokemon bulb;
-
+    private RocketPokemonFactory rpf = new RocketPokemonFactory();
     @Before
     public void init(){
         pf = mock(IPokemonFactory.class);
@@ -22,6 +22,17 @@ public class IPokemonFactoryTest {
         bulb = pf.createPokemon(0,613,64,4000,4);
     }
 
+
+    @Test
+    public void shouldReturn1000stats(){
+        Pokemon test = rpf.createPokemon(-1,1000,1000,4000,4);
+        assertEquals(test.getAttack(),1000);
+    }
+    @Test
+    public void shouldDefault(){
+        Pokemon test = rpf.createPokemon(4,1000,1000,1000,4);
+        assertEquals(test.getName(),"MISSINGNO");
+    }
     @Test
     public void shouldReturnIndex(){
         assertEquals(tt.getIndex(),bulb.getIndex());
@@ -41,6 +52,11 @@ public class IPokemonFactoryTest {
     @Test
     public void shouldReturnDust(){
         assertEquals(tt.getDust(),bulb.getDust());
+    }
+
+    @Test
+    public void shouldReturnPokemon(){
+        assertEquals(rpf.createPokemon(0,613,64,4000,4).getIndex(),tt.getIndex());
     }
 
 

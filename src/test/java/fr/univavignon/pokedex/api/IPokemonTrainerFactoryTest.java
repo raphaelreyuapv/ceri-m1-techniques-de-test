@@ -33,5 +33,11 @@ public class IPokemonTrainerFactoryTest {
         assertEquals(pt.getTeam(),test.getTeam());
     }
 
+    @Test
+    public void shouldReturnPokedex(){
+        PokemonTrainer test = ptf.createTrainer("Bonjour",Team.MYSTIC,pf);
+        assertEquals(pt.getPokedex(),test.getPokedex());
+    }
+
 
 }

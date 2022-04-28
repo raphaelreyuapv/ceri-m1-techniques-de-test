@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -50,8 +51,29 @@ public class IPokedexFactoryTest {
     }
 
     @Test
+    public void shouldReturnSortedPokemonList(){
+        PokemonComparators pc = PokemonComparators.INDEX;
+        when(pokedex.getPokemons(pc)).thenReturn(pokelist);
+        List<Pokemon> poketest = pokedex.getPokemons(pc);
+        assertEquals(poketest.get(0).getIndex(),tt.getIndex());
+    }
+    @Test
     public void shouldReturnSize(){
         assertEquals(pokedex.size(),pokelist.size());
+    }
+
+    @Test
+    public void shouldReturnBulbi(){
+        PokemonComparators pc = PokemonComparators.INDEX;
+        Pokemon bulbi = new Pokemon(0,"bla",0,0,0,0,0,0,0,0.0);
+        Pokemon pasbulbi = new Pokemon(1,"blabla",0,0,0,0,0,0,0,0.0);
+        assertEquals(pc.compare(bulbi,pasbulbi),-1);//-1 pas equal
+
+    }
+    @Test
+    public void shouldReturnAddedIndex(){
+        when(pokedex.addPokemon(tt)).thenReturn(0);
+        assertEquals(pokedex.addPokemon(tt),tt.getIndex());
     }
 
 }
