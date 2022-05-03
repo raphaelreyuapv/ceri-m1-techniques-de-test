@@ -15,23 +15,41 @@ public class IPokemonFactoryTest {
     private RocketPokemonFactory rpf = new RocketPokemonFactory();
     @Before
     public void init(){
-        pf = mock(IPokemonFactory.class);
+        //pf = new PokemonFactory();
+        pf = new RocketPokemonFactory();
         //tt = pf.createPokemon(0,10,100,1,1);
-        tt = new Pokemon(0,"Bulbizare",126,126,90,613,64,4000,4,56.0);
-        when(pf.createPokemon(0,613,64,4000,4)).thenReturn(tt);
+        tt = pf.createPokemon(0,613,64,4000,4);
+
+        //when(pf.createPokemon(0,613,64,4000,4)).thenReturn(tt);
         bulb = pf.createPokemon(0,613,64,4000,4);
     }
 
 
     @Test
-    public void shouldReturn1000stats(){
-        Pokemon test = rpf.createPokemon(-1,1000,1000,4000,4);
-        assertEquals(test.getAttack(),1000);
+    public void shouldReturnBelow15Stats(){
+        Pokemon test = pf.createPokemon(0,1000,1000,4000,4);
+        assertTrue(test.getAttack() < 15);
     }
     @Test
-    public void shouldDefault(){
-        Pokemon test = rpf.createPokemon(4,1000,1000,1000,4);
-        assertEquals(test.getName(),"MISSINGNO");
+    public void shouldReturnNull(){
+        Pokemon test = pf.createPokemon(-1,1000,1000,1000,4);
+        assertNull(test);
+    }
+    @Test
+    public void atkBetween0and15(){
+        assertTrue(tt.getAttack()<15 && tt.getAttack()>0);
+    }
+    @Test
+    public void defBetween0and15(){
+        assertTrue(tt.getDefense()<15 && tt.getDefense()>0);
+    }
+    @Test
+    public void staBetween0and15(){
+        assertTrue(tt.getStamina()<15 && tt.getStamina()>0);
+    }
+    @Test
+    public void shouldReturnName(){
+            assertEquals(tt.getName(),bulb.getName());
     }
     @Test
     public void shouldReturnIndex(){

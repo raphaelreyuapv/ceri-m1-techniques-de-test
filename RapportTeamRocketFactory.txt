@@ -1,0 +1,5 @@
+L'implémentation de la team rocket comporte quelque erreurs:
+    -Pas de vérification d'index negatif
+    -Quand l'index est négatif des stats de 1000 son donné
+    -Les bornes de valeurs aléatoires ne sont pas respecté
+    -L'iv n'est pas calculé mais est just fixé a 1
