@@ -11,7 +11,6 @@ public class PokemonFactory implements IPokemonFactory{
     private static Map<Integer, String> index2name;
     static {
         Map<Integer, String> aMap = new HashMap<Integer, String>();
-        aMap.put(-1, "Ash's Pikachu");
         aMap.put(0, "Bulbizare");
         aMap.put(1, "Aquali");
         //TODO : Gotta map them all !
@@ -21,6 +20,9 @@ public class PokemonFactory implements IPokemonFactory{
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
         Random rand = new Random();
+        if(index < 0){
+            return null;
+        }
         int attack = rand.nextInt(16)-1;
         int def = rand.nextInt(16)-1;
         int stamina = rand.nextInt(16)-1;
