@@ -15,8 +15,8 @@ public class IPokemonFactoryTest {
     private RocketPokemonFactory rpf = new RocketPokemonFactory();
     @Before
     public void init(){
-        //pf = new PokemonFactory();
-        pf = new RocketPokemonFactory();
+        pf = new PokemonFactory();
+        //pf = new RocketPokemonFactory();
         //tt = pf.createPokemon(0,10,100,1,1);
         tt = pf.createPokemon(0,613,64,4000,4);
 
